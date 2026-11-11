@@ -92,7 +92,7 @@ describe('GET /api/digest/:night', () => {
     expect(body.counts).toEqual(
       expect.objectContaining({ ok: expect.any(Number), retry: expect.any(Number), fail: expect.any(Number) }),
     );
-    expect(body.badLines).toBe(0);
+    expect(body.badLines).toBe(1); // the copied 2026-10-28 log ends with one truncated line
     const jobs = body.rows.map((r) => r.job);
     expect(jobs).toEqual([...jobs].sort());
   });
